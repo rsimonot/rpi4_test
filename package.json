@@ -15,5 +15,13 @@
   "bugs": {
     "url": "https://github.com/rsimonot/rpi4_test/issues"
   },
-  "homepage": "https://github.com/rsimonot/rpi4_test#readme"
+  "homepage": "https://github.com/rsimonot/rpi4_test#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "opencv4nodejs": "^5.6.0",
+    "socket.io": "^4.4.0"
+  },
+  "opencv4nodejs": {
+    "disableAutoBuild": 1
+  }
 }
