@@ -4,6 +4,7 @@ const express = require('express');
 const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
+const exec = require('child_process');
 
 // Capturing the camera image with openCV
 const capture = new cv.VideoCapture(0); // Nb refers to the device to use, in our case find the RPI4 camera ID to use
@@ -33,6 +34,22 @@ function caption(){
     const now = capture.read();
     const img = cv.imencode('.jpg', now).toString('base64');
     io.emit('pic', img);
+}
+
+function save_pic(){
+    exec("libcamera-jpeg -o image.jpg", (error, stdout, stderr) => {
+        if (error) {
+            console.log(`error: ${error.message}`);
+            return;
+        }
+        if (stderr) {
+            console.log(`stderr: ${stderr}`);
+            return;
+        }
+        if (!error && !stderr) {
+            document.getElementById('confirm-save').value = "The picture was saved in the current directory";
+        }
+    });
 }
 
 server.listen(3000);

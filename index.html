@@ -2,26 +2,35 @@
     <header style="text-align: center;">RPI4 with camera : test</header>
 
     <body>
-        CAMERA PIC :
-        <img id="camera-pic" alt="Camera Stream">
-        <script src="https://cdn.socket.io/4.4.0/socket.io.min.js" integrity="sha384-1fOn6VtTq3PWwfsOrk45LnYcGosJwzMHv+Xh/Jx5303FVOXzEnw0EpLv30mtjmlj" crossorigin="anonymous"></script>
-        <script>
-            const socket = io.connect('http://localhost:3000');
-            socket.on('camera-pic', (data) => {
-                const image = document.getElementById('camera-pic');
-                image.src = `data:image/jpeg;base64,${camera-pic}`
-            })
-        </script>
+        <div>
+            CAMERA PIC :
+            <img id="camera-pic" alt="Camera Stream">
+            <script src="https://cdn.socket.io/4.4.0/socket.io.min.js" integrity="sha384-1fOn6VtTq3PWwfsOrk45LnYcGosJwzMHv+Xh/Jx5303FVOXzEnw0EpLv30mtjmlj" crossorigin="anonymous"></script>
+            <script>
+                const socket = io.connect('http://localhost:3000');
+                socket.on('camera-pic', (data) => {
+                    const image = document.getElementById('camera-pic');
+                    image.src = `data:image/jpeg;base64,${camera-pic}`
+                })
+            </script>
+    
+            <button id="btn" onclick="caption()">TAKE A PIC</button>
+    
+            <img id="pic" alt="Pic taken">
+            <script>
+                const socket = io.connect('http://localhost:3000');
+                socket.on('pic', (data) => {
+                    const image = document.getElementById('pic');
+                    image.src = `data:image/jpeg;base64,${pic}`
+                })
+            </script>
+        </div>
 
-        <button id="btn" onclick="caption()">TAKE A PIC</button>
-
-        <img id="pic" alt="Pic taken">
-        <script>
-            const socket = io.connect('http://localhost:3000');
-            socket.on('pic', (data) => {
-                const image = document.getElementById('pic');
-                image.src = `data:image/jpeg;base64,${pic}`
-            })
-        </script>
+        <br>
+        <br>
+        <div style="text-align: center;">
+            <button id="btn_save_img" onclick="save_pic()">SAVE A PIC</button>
+            <textarea id="confirm_save"></textarea>
+        </div>
     </body>
 </html>
