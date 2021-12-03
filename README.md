@@ -7,4 +7,4 @@ First hands on a RPI4
 -> opencv4nodejs won't install properly on Mac, I'll come back to it later and win the fight<br>
 -> for now, I'll as soon as possible pull that code on the RPI and test/correct it<br>
 
-*.+\* I'll try to update this when I move on \*+.*
+**.+\* I'll try to update this when I move on \*+.**
