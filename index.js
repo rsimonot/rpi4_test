@@ -47,6 +47,7 @@ function save_pic(){
             return;
         }
         if (!error && !stderr) {
+            document.getElementById('confirm-save').style.backgroundColor = rgb(1, 107, 107);
             document.getElementById('confirm-save').value = "The picture was saved in the current directory";
         }
     });
